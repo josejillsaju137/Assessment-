@@ -1,10 +1,10 @@
 import React from "react";
-import DetailedCardModel, {
-  closeCard,
-} from "../Store/Reducers/DetailedCardModel";
 import { GrClose } from "react-icons/gr";
 import { useDispatch } from "react-redux";
-import AddDataModal, { closeModal } from "../Store/Reducers/AddDataModal";
+import
+  {
+    closeCard
+  } from "../Store/Reducers/DetailedCardModel";
 
 const DetailedCard = ({ movies }) => {
   const dispatch = useDispatch();

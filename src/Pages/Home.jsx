@@ -12,9 +12,6 @@ const Home = () => {
   const DetailedCardModel = useSelector(
     (state, action) => state.DetailedCardModel,
   );
-
-  const MovieDatas = useSelector((state, action) => state);
-
   const ButtonClick = () => {
     dispatch(openModal(""));
   };

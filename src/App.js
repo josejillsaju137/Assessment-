@@ -11,14 +11,10 @@ import AddMovieData from "./Componets/AddMovieData";
 function App() {
   const AddDataModal = useSelector((state, action) => state.addDataModel);
   const EditMovie = useSelector((state, action) => state.EditMovie);
-  const DetailedCardModel = useSelector(
-    (state, action) => state.DetailedCardModel,
-  );
-
   return (
     <div className=' w-full no-scrollbar bg-white'>
-      { AddDataModal && <AddMovieData  /> }
-      { EditMovie && <AddMovieData />}
+      {AddDataModal && <AddMovieData />}
+      {EditMovie && <AddMovieData />}
       <div>
         <Header />
       </div>
@@ -33,7 +29,6 @@ function App() {
             path='*'
             element={<Navigate to='/' />}
           />
-
         </Routes>
       </div>
 

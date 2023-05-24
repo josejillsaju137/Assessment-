@@ -12,7 +12,7 @@ const MovieData = createSlice({
     edit: ( state, action ) =>
     {
       console.log(action.payload);
-      var foundIndex = state.findIndex((x) => x.title == action.payload.selecteddata
+      var foundIndex = state.findIndex((x) => x.title === action.payload.selecteddata
 .      title);
       state[foundIndex] = action.payload.formInput;
     },

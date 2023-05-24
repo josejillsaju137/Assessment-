@@ -21,7 +21,6 @@ const AddMovieData = () => {
   const [file, setFile] = useState("");
   const [heading, setHeading] = useState("Enter");
   const [button, setButton] = useState(" Add New Movie");
-
   const selecteddata = useSelector(
     (state, action) => state.SelectedMovieDetailsReducers,
   );
@@ -29,7 +28,9 @@ const AddMovieData = () => {
     (state, action) => state.EditMovieModalReducer,
   );
   console.log(EditMovieModalReducer);
-  useEffect(() => {
+  useEffect( () =>
+  {
+
     if (EditMovieModalReducer === true) {
       setFile(selecteddata.image);
       setButton("Save");
@@ -42,7 +43,7 @@ const AddMovieData = () => {
         image: selecteddata.image,
       });
     }
-  }, []);
+  }, [EditMovieModalReducer,selecteddata]);
 
   const dispatch = useDispatch();
 
@@ -86,8 +87,6 @@ const AddMovieData = () => {
       }
     }
   };
-  const addDataModelState = useSelector((state) => state);
-
   return (
     <div className='z-[60] inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 backdrop-filter backdrop-blur-sm pt-[1rem] lg:pt-[15rem] fixed overflow-y-scroll w-full h-full'>
       <div className='border-2 border-gray-300 rounded-[12px] flex flex-col py-3 px-7 w-fit min-w-[350px] lg:w-[500px]  h-fit my-8  bg-white relative'>
@@ -203,7 +202,8 @@ const AddMovieData = () => {
                   required
                   name='image'
                   type='file'
-                  accept='.png,.jpg'                  onChange={(e) => {
+                  accept='.png,.jpg'
+                  onChange={(e) => {
                     console.log(e.target?.files);
                     // @ts-ignore
                     const fileList = e.target?.files[0];

@@ -2,21 +2,15 @@ import React, { useState } from "react";
 import { CiTimer } from "react-icons/ci";
 import { FiEdit } from "react-icons/fi";
 import { MdDeleteForever } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
-import { remove } from "../../Store/Reducers/MovieData";
+import { useDispatch } from "react-redux";
 import { openModal } from "../../Store/Reducers/AddDataModal";
 import { editOpenModal } from "../../Store/Reducers/EditMovieModalReducer";
+import { remove } from "../../Store/Reducers/MovieData";
 import { selecteddata } from "../../Store/Reducers/SelectedMovieDetailsReducers";
 const Card = ({ movies, onclick }) => {
   const { title, description, duration, genre, image } = movies;
-  const [selectedMovie, setSelectedMovie] = useState();
   const [isShown, setIsShown] = useState(false);
   const dispatch = useDispatch();
-  const [editOption, setEditOption] = useState(false);
-  const DetailedCardModel = useSelector(
-    (state, action) => state.DetailedCardModel,
-  );
-
   return (
     <div
       onMouseEnter={() => setIsShown(true)}
@@ -28,7 +22,7 @@ const Card = ({ movies, onclick }) => {
       <div
         onClick={(e) => {
           onclick(movies);
-          setSelectedMovie(movies);
+
         }}
         className='flex h-1/2 p-1 sm:p-2'>
 
@@ -43,7 +37,7 @@ const Card = ({ movies, onclick }) => {
       </div>
       <div  onClick={(e) => {
           onclick(movies);
-          setSelectedMovie(movies);
+
         }} className='bg-neutral-50 bg-opacity-60 p-1 sm:p-2 w-full h-28 rounded-lg '>
         <h1 className='font-bold text-gray-800'>{title}</h1>
         <div
@@ -73,7 +67,7 @@ const Card = ({ movies, onclick }) => {
             onClick={() => {
               console.log("editde");
               dispatch(openModal(""));
-              setEditOption( true );
+
               dispatch( selecteddata( movies ) )
               dispatch(editOpenModal(''))
             }}
